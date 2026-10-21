@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout | Anjona Fabrics</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#4a1d3f">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --plum:#4a1d3f;--plum-dark:#2e1027;--rose:#c9577a;--gold:#c9a24b;--gold-light:#e8cf8f;
+    --cream:#fdf8f3;--blush:#f7e9e6;--text:#2b2230;--muted:#7a6b78;--ok:#1f9d63;--err:#c0392b;
+    --shadow:0 10px 30px rgba(74,29,63,.12);--radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Poppins','Hind Siliguri',sans-serif;color:var(--text);background:var(--cream);line-height:1.7;overflow-x:hidden}
+  a{text-decoration:none;color:inherit}
+  .container{width:min(1140px,92%);margin-inline:auto}
+  h1,h2,h3{font-family:'Playfair Display','Hind Siliguri',serif;line-height:1.2}
+
+  header{background:var(--plum-dark);padding:14px 0;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+  .nav{display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;font-weight:700}
+  .logo span{color:var(--gold-light)}
+  .secure{color:var(--gold-light);font-size:.82rem}
+
+  .steps{display:flex;justify-content:center;gap:10px;padding:26px 0 6px;font-size:.82rem;color:var(--muted);flex-wrap:wrap}
+  .steps b{color:var(--plum)}
+  .steps i{font-style:normal;opacity:.4}
+
+  .wrap{display:grid;grid-template-columns:1.35fr 1fr;gap:34px;padding:20px 0 80px;align-items:start}
+  .box{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:30px;margin-bottom:22px}
+  .box h2{font-size:1.3rem;color:var(--plum);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .box h2 em{font-style:normal;background:linear-gradient(135deg,var(--plum),var(--rose));color:#fff;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:.9rem;font-family:'Poppins',sans-serif}
+
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:.82rem;font-weight:600;color:var(--plum);margin-bottom:6px}
+  .field input[type=text],.field input[type=tel],.field input[type=email],.field textarea{width:100%;padding:13px 16px;border:1.5px solid #e6dce3;border-radius:12px;font-family:inherit;font-size:.95rem;background:var(--cream);transition:.2s}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 4px rgba(201,87,122,.12)}
+  .field.bad input,.field.bad textarea{border-color:var(--err)}
+  .field .err{display:none;color:var(--err);font-size:.76rem;margin-top:4px}
+  .field.bad .err{display:block}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+  .opts{display:grid;gap:12px}
+  .opt{position:relative}
+  .opt input{position:absolute;opacity:0}
+  .opt label{display:flex;align-items:center;gap:14px;padding:15px 18px;border:1.5px solid #e6dce3;border-radius:14px;cursor:pointer;transition:.25s;background:var(--cream)}
+  .opt label .dot{width:20px;height:20px;border-radius:50%;border:2px solid #cbb9c6;flex-shrink:0;transition:.2s}
+  .opt label b{display:block;color:var(--plum);font-size:.92rem}
+  .opt label small{color:var(--muted);font-size:.78rem}
+  .opt label .amt{margin-left:auto;font-weight:600;color:var(--rose);font-size:.88rem;white-space:nowrap}
+  .opt input:checked + label{border-color:var(--plum);background:#fff;box-shadow:0 0 0 3px rgba(74,29,63,.1)}
+  .opt input:checked + label .dot{border:6px solid var(--plum)}
+  .payinfo{display:none;margin-top:14px;padding:16px;border-radius:12px;background:var(--blush);font-size:.88rem}
+  .payinfo.show{display:block}
+  .payinfo strong{color:var(--plum)}
+
+  /* Summary */
+  .sum{position:sticky;top:20px}
+  .sitem{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #eadfe6}
+  .sitem .sw{width:46px;height:46px;border-radius:10px;border:2px solid #fff;box-shadow:0 0 0 1px #ddd;flex-shrink:0}
+  .sitem .nm{flex:1;min-width:0;font-size:.88rem}
+  .sitem .nm b{color:var(--plum);display:block}
+  .sitem .nm small{color:var(--muted)}
+  .sitem .pr{font-weight:600;font-size:.88rem}
+  .row{display:flex;justify-content:space-between;padding:7px 0;font-size:.92rem}
+  .row.total{border-top:2px solid var(--plum);margin-top:8px;padding-top:14px;font-size:1.15rem;font-weight:700;color:var(--plum)}
+  .row .free{color:var(--ok);font-weight:600}
+  .hint{font-size:.76rem;color:var(--muted);margin-top:4px}
+
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px;border-radius:50px;font-weight:600;font-size:1rem;border:none;cursor:pointer;transition:.3s;font-family:inherit;background:linear-gradient(135deg,var(--gold),#b8872e);color:#fff;box-shadow:0 8px 20px rgba(201,162,75,.4);margin-top:18px}
+  .btn:hover{transform:translateY(-3px)}
+  .btn:disabled{opacity:.6;cursor:wait;transform:none}
+  .trust{display:flex;justify-content:center;gap:16px;margin-top:14px;font-size:.74rem;color:var(--muted);flex-wrap:wrap}
+  .alert{display:none;background:#fdecea;color:var(--err);padding:12px 16px;border-radius:12px;font-size:.88rem;margin-top:14px}
+  .alert.show{display:block}
+
+  /* Empty + success */
+  .state{max-width:560px;margin:70px auto;text-align:center;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:50px 34px;display:none}
+  .state.show{display:block}
+  .state .big{font-size:3.4rem}
+  .state h2{color:var(--plum);margin:12px 0 8px}
+  .state p{color:var(--muted)}
+  .oid{display:inline-block;margin:18px 0;padding:10px 24px;border-radius:50px;background:var(--blush);color:var(--plum);font-weight:700;letter-spacing:1px}
+  .state .btn{display:inline-flex;width:auto;padding:14px 34px}
+  .demo{margin-top:18px;font-size:.78rem;color:#9a7b2b;background:#fff7e0;padding:10px 14px;border-radius:10px}
+
+  @media(max-width:900px){
+    .wrap{grid-template-columns:1fr}
+    .sum{position:static}
+    .two{grid-template-columns:1fr}
+    .box{padding:22px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="index.html" class="logo">Anjona <span>Tailors</span></a>
+    <span class="secure">🔒 Secure Checkout</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- EMPTY CART -->
+  <div class="state" id="emptyState">
+    <div class="big">🛍️</div>
+    <h2>Apnar cart khali</h2>
+    <p>Fabrics page theke pochondo-er kapor add korun, tarpor ekhane ashun.</p>
+    <br><a href="fabrics.html" class="btn">Fabrics dekhun</a>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="state" id="doneState">
+    <div class="big">🎉</div>
+    <h2>Order shofol hoyeche!</h2>
+    <p>Dhonnobad! Amra shighroi apnar shathe jogajog korbo.</p>
+    <div class="oid" id="oidShow">AF-000000</div>
+    <p>Order number ta songe rakhun.</p>
+    <div class="demo" id="demoNote" style="display:none">⚠️ Eta test mode. Order ekhono server-e jayni, shudhu apnar browser-e save hoyeche. Server link korle asol order admin-e ashbe.</div>
+    <br><a href="fabrics.html" class="btn">Aro kapor dekhun</a>
+  </div>
+
+  <!-- CHECKOUT -->
+  <div id="main" style="display:none">
+    <div class="steps"><span>🛒 Cart</span><i>›</i><b>📝 Checkout</b><i>›</i><span>✅ Done</span></div>
+
+    <form class="wrap" id="form" novalidate>
+      <div>
+        <div class="box">
+          <h2><em>1</em> Apnar tothyo</h2>
+          <div class="two">
+            <div class="field" id="f-name"><label>Poro nam *</label><input type="text" id="name" placeholder="Fatema Akter" autocomplete="name"><div class="err">Nam likhun</div></div>
+            <div class="field" id="f-phone"><label>Mobile number *</label><input type="tel" id="phone" placeholder="01XXXXXXXXX" autocomplete="tel" inputmode="numeric"><div class="err">Shothik 11 digit-er BD number din</div></div>
+          </div>
+          <div class="field"><label>Email (optional)</label><input type="email" id="email" placeholder="you@example.com" autocomplete="email"></div>
+        </div>
+
+        <div class="box">
+          <h2><em>2</em> Delivery</h2>
+          <div class="field" id="f-addr"><label>Puro thikana *</label><textarea id="addr" rows="3" placeholder="Bari/Flat, Road, Thana, Zila" autocomplete="street-address"></textarea><div class="err">Thikana likhun</div></div>
+          <div class="opts">
+            <div class="opt"><input type="radio" name="area" id="a1" value="dhaka" checked><label for="a1"><span class="dot"></span><span><b>Dhaka-r bhetor</b><small>1-2 din-e delivery</small></span><span class="amt" id="amtDhaka"></span></label></div>
+            <div class="opt"><input type="radio" name="area" id="a2" value="outside"><label for="a2"><span class="dot"></span><span><b>Dhaka-r baire</b><small>3-5 din-e delivery</small></span><span class="amt" id="amtOut"></span></label></div>
+          </div>
+          <div class="field" style="margin-top:16px"><label>Special note (optional)</label><textarea id="note" rows="2" placeholder="Jemon: rong, yard ba onno kichu"></textarea></div>
+        </div>
+
+        <div class="box">
+          <h2><em>3</em> Payment</h2>
+          <div class="opts" id="payOpts">
+            <div class="opt"><input type="radio" name="pay" id="p1" value="cod" checked><label for="p1"><span class="dot"></span><span><b>Cash on Delivery</b><small>Kapor hate peye taka din</small></span></label></div>
+            <div class="opt"><input type="radio" name="pay" id="p2" value="bkash"><label for="p2"><span class="dot"></span><span><b>bKash</b><small>Send Money kore Transaction ID din</small></span></label></div>
+            <div class="opt"><input type="radio" name="pay" id="p3" value="nagad"><label for="p3"><span class="dot"></span><span><b>Nagad</b><small>Send Money kore Transaction ID din</small></span></label></div>
+          </div>
+          <div class="payinfo" id="payinfo">
+            <p>Ei number-e <strong id="payTotal"></strong> <strong>Send Money</strong> korun (Personal): <strong id="payNum"></strong></p>
+            <div class="field" id="f-trx" style="margin:12px 0 0"><label>Transaction ID *</label><input type="text" id="trx" placeholder="Jemon: 8N7A6D5E4C"><div class="err">Transaction ID din</div></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="sum">
+        <div class="box">
+          <h2>Order summary</h2>
+          <div id="sItems"></div>
+          <div style="margin-top:12px">
+            <div class="row"><span>Subtotal</span><span id="sSub"></span></div>
+            <div class="row"><span>Delivery</span><span id="sDel"></span></div>
+            <div class="row total"><span>Total</span><span id="sTot"></span></div>
+            <div class="hint" id="freeHint"></div>
+          </div>
+          <div class="alert" id="alert"></div>
+          <button class="btn" type="submit" id="placeBtn">🔒 Order confirm korun</button>
+          <div class="trust"><span>✓ Safe &amp; secure</span><span>✓ Easy support</span><span>✓ Quality guarantee</span></div>
+        </div>
+      </aside>
+    </form>
+  </div>
+</div>
+
+<script src="cart.js"></script>
+<script>
+  const CFG = window.ANJONA_CONFIG, M = Cart.money, E = Cart.esc;
+  const $ = id => document.getElementById(id);
+  let placed = false;
+
+  function area(){ return document.querySelector('input[name=area]:checked').value; }
+  function pay(){ return document.querySelector('input[name=pay]:checked').value; }
+  function totals(){
+    const sub = Cart.subtotal();
+    const del = Cart.deliveryFee(area(), sub);
+    return { sub, del, tot: sub + del };
+  }
+
+  function paint(){
+    if (placed) return;
+    if (!Cart.count()) { $('main').style.display = 'none'; $('emptyState').classList.add('show'); return; }
+    $('main').style.display = 'block'; $('emptyState').classList.remove('show');
+
+    $('sItems').innerHTML = Cart.items().map(i => `
+      <div class="sitem"><div class="sw" style="background:${E(i.color)}"></div>
+      <div class="nm"><b>${E(i.name)}</b><small>${i.qty} yard × ${M(i.price)}</small></div>
+      <div class="pr">${M(i.price * i.qty)}</div></div>`).join('');
+
+    const t = totals();
+    $('sSub').textContent = M(t.sub);
+    $('sDel').innerHTML = t.del ? M(t.del) : '<span class="free">FREE</span>';
+    $('sTot').textContent = M(t.tot);
+    $('amtDhaka').textContent = Cart.subtotal() >= CFG.freeDeliveryAbove && CFG.freeDeliveryAbove ? 'FREE' : M(CFG.deliveryDhaka);
+    $('amtOut').textContent   = Cart.subtotal() >= CFG.freeDeliveryAbove && CFG.freeDeliveryAbove ? 'FREE' : M(CFG.deliveryOutside);
+    $('payTotal').textContent = M(t.tot);
+
+    if (CFG.freeDeliveryAbove && t.sub < CFG.freeDeliveryAbove)
+      $('freeHint').textContent = `Aro ${M(CFG.freeDeliveryAbove - t.sub)} er kapor nile delivery FREE!`;
+    else $('freeHint').textContent = CFG.freeDeliveryAbove ? '🎁 Apni free delivery pachchen!' : '';
+  }
+
+  function payUI(){
+    const p = pay(), box = $('payinfo');
+    if (p === 'cod') { box.classList.remove('show'); return; }
+    $('payNum').textContent = p === 'bkash' ? CFG.bkash : CFG.nagad;
+    box.classList.add('show');
+  }
+
+  document.querySelectorAll('input[name=area]').forEach(r => r.addEventListener('change', paint));
+  document.querySelectorAll('input[name=pay]').forEach(r => r.addEventListener('change', () => { payUI(); paint(); }));
+  Cart.onChange(paint);
+
+  function bad(id, cond){ $(id).classList.toggle('bad', cond); return cond; }
+
+  function validate(){
+    let ok = true, first = null;
+    const check = (id, cond) => { if (bad(id, cond)) { ok = false; first = first || $(id); } };
+    check('f-name', $('name').value.trim().length < 2);
+    check('f-phone', !/^01[3-9]\d{8}$/.test($('phone').value.replace(/[\s-]/g, '')));
+    check('f-addr', $('addr').value.trim().length < 8);
+    if (pay() !== 'cod') check('f-trx', $('trx').value.trim().length < 6);
+    else $('f-trx').classList.remove('bad');
+    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return ok;
+  }
+
+  /* ============ ORDER SUBMIT: server-e pathanor jaiga ============
+     CFG.orderApi (cart.js-e) bosale POST JSON jabe.
+     Khali thakle test mode: browser-e save hobe. */
+  async function submitOrder(order){
+    if (CFG.orderApi) {
+      const r = await fetch(CFG.orderApi, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(order) });
+      if (!r.ok) throw new Error('Server error ' + r.status);
+      return { demo: false };
+    }
+    try {
+      const list = JSON.parse(localStorage.getItem('anjona_orders') || '[]');
+      list.push(order);
+      localStorage.setItem('anjona_orders', JSON.stringify(list));
+    } catch (e) {}
+    return { demo: true };
+  }
+  /* =============================================================== */
+
+  $('form').addEventListener('submit', async e => {
+    e.preventDefault();
+    $('alert').classList.remove('show');
+    if (!validate()) return;
+
+    const t = totals();
+    const order = {
+      orderId: 'AF-' + Date.now().toString(36).toUpperCase().slice(-6),
+      createdAt: new Date().toISOString(),
+      status: 'pending',
+      customer: { name: $('name').value.trim(), phone: $('phone').value.replace(/[\s-]/g, ''), email: $('email').value.trim() },
+      delivery: { area: area(), address: $('addr').value.trim(), note: $('note').value.trim() },
+      payment: { method: pay(), trxId: pay() === 'cod' ? '' : $('trx').value.trim(), status: pay() === 'cod' ? 'cod' : 'to_verify' },
+      items: Cart.items().map(i => ({ name: i.name, color: i.color, qty: i.qty, unit: 'yard', price: i.price, lineTotal: i.price * i.qty })),
+      subtotal: t.sub, deliveryFee: t.del, total: t.tot
+    };
+
+    const btn = $('placeBtn'); btn.disabled = true; btn.textContent = 'Order hochche...';
+    try {
+      const res = await submitOrder(order);
+      placed = true;
+      Cart.clear();
+      $('main').style.display = 'none';
+      $('oidShow').textContent = order.orderId;
+      $('demoNote').style.display = res.demo ? 'block' : 'none';
+      $('doneState').classList.add('show');
+      scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err) {
+      $('alert').textContent = 'Order pathano jayni. Internet check kore abar chesta korun.';
+      $('alert').classList.add('show');
+      btn.disabled = false; btn.textContent = '🔒 Order confirm korun';
+    }
+  });
+
+  payUI(); paint();
+</script>
+</body>
+</html>
