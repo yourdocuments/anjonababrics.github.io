@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anjona Fabrics | Premium Ladies Dress Fabrics</title>
+<meta name="description" content="Anjona Fabrics: cotton, georgette, silk, chiffon, velvet and more. Choose your fabric and get it tailored perfectly at Anjona Ladies Tailors.">
+<meta name="theme-color" content="#4a1d3f">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --plum:#4a1d3f;--plum-dark:#2e1027;--rose:#c9577a;--gold:#c9a24b;--gold-light:#e8cf8f;
+    --cream:#fdf8f3;--blush:#f7e9e6;--text:#2b2230;--muted:#7a6b78;
+    --shadow:0 10px 30px rgba(74,29,63,.12);--radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Poppins','Hind Siliguri',sans-serif;color:var(--text);background:var(--cream);line-height:1.7;overflow-x:hidden}
+  a{text-decoration:none;color:inherit}
+  img{max-width:100%;display:block}
+  .container{width:min(1140px,92%);margin-inline:auto}
+  h1,h2,h3{font-family:'Playfair Display','Hind Siliguri',serif;line-height:1.2}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 24px;border-radius:50px;font-weight:600;font-size:.9rem;border:none;cursor:pointer;transition:.3s;font-family:inherit}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),#b8872e);color:#fff;box-shadow:0 8px 20px rgba(201,162,75,.35)}
+  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(201,162,75,.5)}
+
+  header{position:fixed;inset:0 0 auto 0;z-index:100;background:rgba(46,16,39,.97);backdrop-filter:blur(8px);padding:12px 0;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+  .nav{display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;font-weight:700}
+  .logo span{color:var(--gold-light)}
+  .menu{display:flex;gap:28px;align-items:center;list-style:none}
+  .menu a{color:#fff;font-size:.9rem;font-weight:500;opacity:.9;transition:.2s}
+  .menu a:hover,.menu a.active{color:var(--gold-light);opacity:1}
+  .lang{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);padding:6px 14px;border-radius:30px;cursor:pointer;font-size:.8rem;font-family:inherit}
+  .burger{display:none;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;margin-left:10px}
+
+  .page-hero{padding:130px 0 60px;text-align:center;color:#fff;
+    background:linear-gradient(135deg,rgba(46,16,39,.96),rgba(74,29,63,.88)),radial-gradient(circle at 80% 20%,var(--rose),transparent 55%),var(--plum-dark);position:relative}
+  .page-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 90%,rgba(201,162,75,.25),transparent 45%)}
+  .page-hero .container{position:relative}
+  .page-hero small{color:var(--gold-light);letter-spacing:3px;text-transform:uppercase;font-size:.8rem}
+  .page-hero h1{font-size:clamp(2.2rem,5.5vw,3.6rem);margin:12px 0}
+  .page-hero h1 em{color:var(--gold-light);font-style:italic}
+  .page-hero p{max-width:560px;margin:0 auto;opacity:.9}
+
+  .toolbar{padding:36px 0 10px}
+  .search{width:100%;padding:14px 20px;border:1.5px solid #e6dce3;border-radius:50px;font-family:inherit;font-size:.95rem;background:#fff;transition:.2s;box-shadow:var(--shadow)}
+  .search:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 4px rgba(201,87,122,.12)}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;justify-content:center}
+  .chip{padding:9px 20px;border-radius:50px;border:1.5px solid var(--plum);background:transparent;color:var(--plum);font-family:inherit;font-weight:500;font-size:.85rem;cursor:pointer;transition:.25s}
+  .chip:hover{background:var(--blush)}
+  .chip.active{background:var(--plum);color:#fff}
+
+  .products{padding:30px 0 80px}
+  .count{color:var(--muted);font-size:.85rem;margin-bottom:18px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
+  .pcard{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.35s;display:flex;flex-direction:column}
+  .pcard:hover{transform:translateY(-8px)}
+  .swatch{height:210px;position:relative;display:flex;align-items:flex-end;justify-content:space-between;padding:14px;transition:.4s}
+  .swatch img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .badge{position:relative;z-index:2;background:rgba(255,255,255,.92);color:var(--plum);font-size:.72rem;font-weight:600;padding:4px 12px;border-radius:30px}
+  .badge.hot{background:var(--rose);color:#fff}
+  .pbody{padding:20px;display:flex;flex-direction:column;flex:1}
+  .pbody h3{font-size:1.15rem;color:var(--plum);margin-bottom:4px}
+  .pbody p{color:var(--muted);font-size:.86rem;flex:1}
+  .price{color:var(--rose);font-weight:600;font-size:1.05rem;margin:12px 0 8px}
+  .price small{color:var(--muted);font-weight:400;font-size:.75rem}
+  .label{font-size:.74rem;color:var(--muted);margin-bottom:6px}
+  .colors{display:flex;gap:8px;margin-bottom:14px}
+  .colors button{width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #ddd;cursor:pointer;transition:.2s;padding:0}
+  .colors button.sel{box-shadow:0 0 0 2.5px var(--plum);transform:scale(1.12)}
+  .buy{display:flex;gap:10px;align-items:center}
+  .qty{display:inline-flex;align-items:center;border:1.5px solid #e6dce3;border-radius:30px;background:var(--cream)}
+  .qty button{width:34px;height:40px;border:none;background:none;font-size:1.15rem;cursor:pointer;color:var(--plum)}
+  .qty span{min-width:48px;text-align:center;font-size:.85rem;font-weight:600}
+  .buy .btn{flex:1;padding:11px 14px;font-size:.85rem}
+  .empty{text-align:center;color:var(--muted);padding:60px 0;display:none}
+
+  .cta{background:var(--plum);color:#fff;text-align:center;padding:64px 0}
+  .cta h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin-bottom:10px}
+  .cta p{opacity:.85;max-width:560px;margin:0 auto 24px}
+
+  footer{background:var(--plum-dark);color:rgba(255,255,255,.75);padding:36px 0;text-align:center;font-size:.9rem}
+  footer b{color:var(--gold-light)}
+
+  .reveal{opacity:0;transform:translateY(30px);transition:.8s}
+  .reveal.show{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    .burger{display:block}
+    .menu{position:fixed;inset:0 0 0 30%;background:var(--plum-dark);flex-direction:column;justify-content:center;gap:28px;transform:translateX(100%);transition:.4s;z-index:50}
+    .menu.open{transform:none}
+    .nav{gap:6px}
+    .ac-btn span{display:none}
+    .ac-btn{margin-left:auto}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="index.html" class="logo">Anjona <span>Tailors</span></a>
+    <ul class="menu" id="menu">
+      <li><a href="index.html#services" data-bn="সেবা" data-en="Services">Services</a></li>
+      <li><a href="fabrics.html" class="active" data-bn="ফেব্রিক্স" data-en="Fabrics">Fabrics</a></li>
+      <li><a href="index.html#gallery" data-bn="গ্যালারি" data-en="Gallery">Gallery</a></li>
+      <li><a href="index.html#process" data-bn="কীভাবে কাজ হয়" data-en="How it works">How it works</a></li>
+      <li><a href="index.html#reviews" data-bn="রিভিউ" data-en="Reviews">Reviews</a></li>
+      <li><a href="index.html#book" data-bn="বুকিং" data-en="Book">Book</a></li>
+      <li><button class="lang" id="langBtn">বাংলা / EN</button></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <small data-bn="প্রিমিয়াম কাপড়ের সংগ্রহ" data-en="Premium Fabric Collection">Premium Fabric Collection</small>
+    <h1>Anjona <em>Fabrics</em></h1>
+    <p data-bn="পছন্দের কাপড় বেছে নিন, কার্টে যোগ করুন, আর নিরাপদে অর্ডার করুন।" data-en="Pick your fabric, add it to the cart and order securely.">Pick your fabric, add it to the cart and order securely.</p>
+  </div>
+</section>
+
+<section class="toolbar">
+  <div class="container">
+    <input class="search" id="search" type="search" placeholder="Search fabric... (cotton, silk, georgette)">
+    <div class="chips" id="chips"></div>
+  </div>
+</section>
+
+<section class="products">
+  <div class="container">
+    <div class="count" id="count"></div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty">Kono fabric paoya jayni. Onno kichu search korun.</div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2 data-bn="কাপড় পছন্দ হয়েছে? এবার সেলাই করান" data-en="Chosen a fabric? Get it stitched">Chosen a fabric? Get it stitched</h2>
+    <p data-bn="কাপড় কিনুন আমাদের কাছ থেকে, আর সেলাই করান একই জায়গায়। সময় ও ঝামেলা দুটোই বাঁচবে।" data-en="Buy the fabric and get it tailored in one place. Save time and hassle.">Buy the fabric and get it tailored in one place. Save time and hassle.</p>
+    <a href="index.html#book" class="btn btn-gold" data-bn="সেলাই বুক করুন" data-en="Book Tailoring">Book Tailoring</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; <span id="yr"></span> <b>Anjona Ladies Tailors &amp; Fabrics</b>. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Cart (navbar icon + drawer). Eta shobar age load hobe -->
+<script src="cart.js"></script>
+
+<script>
+  /* ====== FABRIC LIST: notun fabric add korte ekta { ... }, line copy korun ======
+     name    : kapor-er nam
+     cat     : Cotton | Silk | Party | Bridal  (category)
+     price   : prottek yard-er daam (taka)
+     desc    : choto description
+     colors  : rong-er list (hex code)
+     img     : photo-r path, jemon "images/fabrics/cotton.jpg" (faka rakhle rong dekhabe)
+     badge   : "" ba "Popular" ba "New"
+  ================================================================================ */
+  const FABRICS = [
+    { name:"Soft Cotton",      cat:"Cotton", price:220, desc:"Rojker pora-r jonno halka o aramdayok cotton.",    colors:["#f4c2c2","#a8d5ba","#f7e7a1","#b5c7ed"], img:"", badge:"Popular" },
+    { name:"Pure Linen",       cat:"Cotton", price:380, desc:"Gorom-e thanda, premium look-er linen.",            colors:["#e8dcc8","#c9b79c","#8aa29e"],          img:"", badge:"" },
+    { name:"Muslin Cotton",    cat:"Cotton", price:450, desc:"Halka, naram, ar traditional feel.",                colors:["#fff3e0","#f8d7da","#d4e6f1"],          img:"", badge:"New" },
+    { name:"Katan Silk",       cat:"Silk",   price:950, desc:"Chokchoke shine ar rich texture, utshober jonno.",  colors:["#7b2d5f","#c9a24b","#1f6f6b","#b3203a"],img:"", badge:"Popular" },
+    { name:"Pure Silk",        cat:"Silk",   price:1200,desc:"Premium shilk, sundor fall ar mosrin feel.",        colors:["#c9577a","#4a1d3f","#e8cf8f"],          img:"", badge:"" },
+    { name:"Georgette",        cat:"Party",  price:420, desc:"Flowy fall, party o utshober dress-er jonno.",      colors:["#d94f70","#3d5a80","#6b3fa0","#2a9d8f"],img:"", badge:"Popular" },
+    { name:"Chiffon",          cat:"Party",  price:380, desc:"Halka o sundor, dupatta ar kameez-e darun.",        colors:["#f6b8c8","#c3e0e5","#ffe0b5"],          img:"", badge:"" },
+    { name:"Velvet",           cat:"Party",  price:780, desc:"Sheeter party-r jonno rich velvet.",                colors:["#5a1a3a","#1b3a4b","#2c2c54"],          img:"", badge:"New" },
+    { name:"Bridal Banarasi",  cat:"Bridal", price:2800,desc:"Bie-r jonno zari kaj-er Banarasi kapor.",           colors:["#a4161a","#c9a24b","#6a040f"],          img:"", badge:"Premium" },
+    { name:"Net with Zari",    cat:"Bridal", price:1500,desc:"Lehenga ar dupatta-r jonno shundor net.",           colors:["#e5b3c1","#d4af37","#f5e1da"],          img:"", badge:"" }
+  ];
+  /* ================================================================ */
+
+  const grid = document.getElementById('grid');
+  const chipsBox = document.getElementById('chips');
+  const searchBox = document.getElementById('search');
+  const countEl = document.getElementById('count');
+  const emptyEl = document.getElementById('empty');
+  const E = Cart.esc, M = Cart.money;
+  let activeCat = 'All';
+
+  const cats = ['All', ...new Set(FABRICS.map(f => f.cat))];
+  chipsBox.innerHTML = cats.map(c => `<button class="chip ${c==='All'?'active':''}" data-cat="${c}">${c}</button>`).join('');
+  chipsBox.addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if (!b) return;
+    activeCat = b.dataset.cat;
+    chipsBox.querySelectorAll('.chip').forEach(x => x.classList.toggle('active', x === b));
+    render();
+  });
+  searchBox.addEventListener('input', render);
+
+  const gradients = {
+    Cotton:"linear-gradient(160deg,#e8b4b8,#8b3a62)",
+    Silk:"linear-gradient(160deg,#c9a24b,#4a1d3f)",
+    Party:"linear-gradient(160deg,#c9577a,#2e1027)",
+    Bridal:"linear-gradient(160deg,#a4161a,#c9a24b)"
+  };
+
+  function render(){
+    const q = searchBox.value.trim().toLowerCase();
+    const list = FABRICS.map((f, i) => ({ ...f, i })).filter(f =>
+      (activeCat === 'All' || f.cat === activeCat) &&
+      (f.name + ' ' + f.cat + ' ' + f.desc).toLowerCase().includes(q)
+    );
+    countEl.textContent = list.length + ' fabric(s)';
+    emptyEl.style.display = list.length ? 'none' : 'block';
+    grid.innerHTML = list.map(f => `
+      <div class="pcard reveal" data-i="${f.i}">
+        <div class="swatch" style="background:${f.colors[0]}">
+          ${f.img ? `<img src="${E(f.img)}" alt="${E(f.name)}" loading="lazy">` : `<div style="position:absolute;inset:0;background:${gradients[f.cat] || gradients.Cotton};opacity:.35"></div>`}
+          <span class="badge">${E(f.cat)}</span>
+          ${f.badge ? `<span class="badge hot">${E(f.badge)}</span>` : ''}
+        </div>
+        <div class="pbody">
+          <h3>${E(f.name)}</h3>
+          <p>${E(f.desc)}</p>
+          <div class="price">${M(f.price)} <small>/ yard</small></div>
+          <div class="label">Rong bachai korun</div>
+          <div class="colors">${f.colors.map((c, k) => `<button class="${k===0?'sel':''}" data-color="${c}" style="background:${c}" aria-label="Color ${c}"></button>`).join('')}</div>
+          <div class="buy">
+            <div class="qty"><button data-q="-">−</button><span data-val="1">1 yd</span><button data-q="+">+</button></div>
+            <button class="btn btn-gold" data-add>🛒 Add to Cart</button>
+          </div>
+        </div>
+      </div>`).join('');
+    observe();
+  }
+
+  // Card-er bhetor click handle (color, qty, add)
+  grid.addEventListener('click', e => {
+    const card = e.target.closest('.pcard'); if (!card) return;
+    const f = FABRICS[card.dataset.i];
+
+    const dot = e.target.closest('.colors button');
+    if (dot) {
+      card.querySelectorAll('.colors button').forEach(b => b.classList.toggle('sel', b === dot));
+      card.querySelector('.swatch').style.background = dot.dataset.color;
+      return;
+    }
+    const qb = e.target.closest('[data-q]');
+    if (qb) {
+      const span = card.querySelector('.qty span');
+      let v = parseFloat(span.dataset.val) + (qb.dataset.q === '+' ? 0.5 : -0.5);
+      v = Math.max(0.5, Math.min(50, v));
+      span.dataset.val = v; span.textContent = v + ' yd';
+      return;
+    }
+    if (e.target.closest('[data-add]')) {
+      const color = card.querySelector('.colors button.sel').dataset.color;
+      const qty = parseFloat(card.querySelector('.qty span').dataset.val);
+      Cart.add({ name: f.name, color, price: f.price, qty });
+    }
+  });
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('show'); io.unobserve(en.target); } });
+  }, { threshold: .1 });
+  function observe(){ document.querySelectorAll('.reveal:not(.show)').forEach(el => io.observe(el)); }
+
+  // Menu + language
+  const menu = document.getElementById('menu');
+  document.getElementById('burger').onclick = () => menu.classList.toggle('open');
+  menu.querySelectorAll('a').forEach(a => a.onclick = () => menu.classList.remove('open'));
+  let lang = 'en';
+  document.getElementById('langBtn').onclick = () => {
+    lang = lang === 'en' ? 'bn' : 'en';
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-bn]').forEach(el => { el.innerHTML = el.getAttribute('data-' + lang); });
+  };
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  render();
+</script>
+</body>
+</html>
